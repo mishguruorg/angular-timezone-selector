@@ -1,31 +1,26 @@
-# Timezone select for AngularJS
+# Timezone selector for Angular JS
 
-A simple AngularJS directive to create timezone select. It uses [select2](http://select2.github.io/select2/) to create auto-complete timezone select. Timezone information comes from [moment](http://momentjs.com/timezone/). Countries timezone data comes from [TimezoneDB](http://timezonedb.com/download).
+A simple AngularJS directive to create timezone select. It uses [chosen](harvesthq.github.io/chosen/) to create auto-complete timezone select. Timezone information comes from [moment](http://momentjs.com/timezone/). Countries timezone data comes from [TimezoneDB](http://timezonedb.com/download).
 
-In the dropdown, timezones are divided into three groups:
-* __UTC__ - UTC is a common option for most users.
-* __Common__ - Timezones for a country
-* __Other__ - Other timezones
+The user is able to choose their timezone by either typing the name of their country, or the name of the timezone directly.
 
-If the user has already selected the country, timezones for the country will be listed first, which makes easier for user to select.
+The angular model that is bound to this directive will be set to the timezone name as used by [moment-timezone](http://momentjs.com/timezone/docs/) i.e `Pacific/Auckland`.
 
 ## Usage
 
-Make your Angular module depend on module `angular-timezone-select`.
+Make your Angular module depend on module `angular-timezone-selector`.
 
 ```javascript
-angular.module('timezoneSelectExample', ['angular-timezone-select']);
+angular.module('timezoneSelectExample', ['angular-timezone-selector']);
 ```
 
-Then use directive `timezone-select`.
+Then use directive `timezone-selector`.
 
 ```html
-<input timezone-select data-ng-model="timezone" country="country">
+<timezone-selector ng-model="timezone">
 ```
 
-Attribute `country` can be used to bind user's selected country. Value of selected country should be the [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code, e.g. `CN`, `US`.
+# Attributions
+Inspired by (angular-timezone-select)[https://github.com/alexcheng1982/angular-timezone-select] from [alexcheng1982](https://github.com/alexcheng1982).
 
-See `example.html` for a simple example.
-
-# Thanks to 
-(alxlit's bootstrap-chosen)[https://github.com/alxlit/bootstrap-chosen]
+Styled using the examples from (bootstrap-chosen)[https://github.com/alxlit/bootstrap-chosen] by [alxlit](https://github.com/alxlit)
