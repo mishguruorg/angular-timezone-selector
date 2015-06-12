@@ -97,7 +97,8 @@ angular.module('angular-timezone-selector', [])
           width: '300px',
           include_group_label_in_selected: true,
           search_contains: true,
-          no_results_text: 'No results, try searching for the name of your country or nearest major city.'
+          no_results_text: 'No results, try searching for the name of your country or nearest major city.',
+          placeholder_text_single: 'Choose a timezone'
         })
 
         // Update the box if ngModel changes
