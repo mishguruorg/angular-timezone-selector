@@ -31,10 +31,52 @@ module.exports = function (grunt) {
         }
       }
     },
+    less: {
+      compileless: {
+        options: {
+          paths: ['./bower_components/bootstrap/less', './styling']
+        },
+        files: {
+          './styling/angular-timezone-selector.css': './styling/bootstrap-chosen.less'
+        }
+      }
+    },
+    autoprefixer: {
+      options: {
+        browsers: ['last 3 versions', 'ie 8', 'ie 9', 'ie 10', 'ie 11']
+      },
+      prefix: {
+        files: {
+          './styling/angular-timezone-selector.css': './styling/angular-timezone-selector.css'
+        }
+      }
+    },
+    cssmin: {
+      all: {
+        expand: true,
+        cwd: './styling/',
+        src: ['*.css', '!*.min.css'],
+        dest: './styling/',
+        ext: '.min.css'
+      }
+    },
+
     copy: {
       dist: {
         src: 'build/<%= pkg.name %>.js',
         dest: 'dist/<%= pkg.name %>.js'
+      },
+      stylingCss: {
+        expand: true,
+        flatten: true,
+        src: 'styling/*.css',
+        dest: 'dist/'
+      },
+      stylingSprites: {
+        expand: true,
+        flatten: true,
+        src: 'styling/*.png',
+        dest: 'dist/'
       }
     }
   })
@@ -42,5 +84,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify')
   grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-string-replace')
-  grunt.registerTask('default', ['string-replace:inline', 'uglify:dist', 'copy:dist'])
+  grunt.loadNpmTasks('grunt-contrib-cssmin')
+  grunt.loadNpmTasks('grunt-contrib-less')
+  grunt.loadNpmTasks('grunt-autoprefixer')
+  grunt.registerTask('default', ['string-replace', 'uglify', 'less', 'autoprefixer', 'cssmin', 'copy'])
 }

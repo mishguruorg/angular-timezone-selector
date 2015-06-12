@@ -6,7 +6,10 @@
     "Ashok Fernandez <ashok@mish.guru>"
   ],
   "description": "Timezone selector for Angular JS",
-  "main": "dist/angular-timezone-selector.js",
+  "main": [
+    "dist/angular-timezone-selector.js",
+    "dist/angular-timezone-selector.css"
+  ],
   "keywords": [
     "timezone",
     "select"
@@ -24,6 +27,8 @@
     "moment": "~2.10.3",
     "moment-timezone": "~0.4.0",
     "lodash": "~3.9.3",
-    "chosen": "~1.4.2"
+    "chosen": "~1.4.2",
+    "bootstrap": "~3.3.4",
+    "v1.0": "https://github.com/alxlit/bootstrap-chosen/releases/tag/v1.0.1"
   }
 }

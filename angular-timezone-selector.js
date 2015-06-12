@@ -76,6 +76,8 @@ angular.module('angular-timezone-selector', [])
           elem.append($optgroup)
         })
 
+        elem.chosen()
+
         // elem.select2({
         //   data: data,
         //   theme: 'classic',

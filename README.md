@@ -26,3 +26,6 @@ Then use directive `timezone-select`.
 Attribute `country` can be used to bind user's selected country. Value of selected country should be the [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code, e.g. `CN`, `US`.
 
 See `example.html` for a simple example.
+
+# Thanks to 
+(alxlit's bootstrap-chosen)[https://github.com/alxlit/bootstrap-chosen]
