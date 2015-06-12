@@ -1,4 +1,15 @@
 /*global angular, _, moment, $*/
+
+/**
+ * angular-timezone-selector
+ *
+ * A simple directive that allows a user to pick their timezone
+ *
+ * Author:  Ashok Fernandez <ashok@mish.guru>
+ * Date:    12/06/2015
+ * License: MIT
+ */
+
 angular.module('angular-timezone-selector', [])
   .constant('_', _)
   .constant('moment', moment)
@@ -13,7 +24,10 @@ angular.module('angular-timezone-selector', [])
     })
     return timezoneMap
   }])
+
+  // Timezone name to country codemap
   .factory('zoneToCC', ['_', function (_) {
+    // Note: zones is populated with the data from 'data/zone.csv' when this file is built
     var zones = []
     var zoneMap = {}
     _.forEach(zones, function (zone) {
@@ -22,7 +36,10 @@ angular.module('angular-timezone-selector', [])
     return zoneMap
 
   }])
+
+  // Country code to country name map
   .factory('CCToCountryName', ['_', function (_) {
+    // Note: codes is populated with the data from 'data/cca2_to_country_name.csv' when this file is built
     var codes = []
     var codeMap = {}
     _.forEach(codes, function (code) {
@@ -30,12 +47,12 @@ angular.module('angular-timezone-selector', [])
     })
     return codeMap
   }])
+
   .directive('timezoneSelector', ['_', 'timezones', 'zoneToCC', 'CCToCountryName', function (_, timezones, zoneToCC, CCToCountryName) {
     return {
       restrict: 'E',
       replace: true,
       template: '<select style="min-width:300px;"></select>',
-      // require: 'ngModel',
       scope: {
         ngModel: '='
       },
