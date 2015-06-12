@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Angular-timezone-selector by mishguruorg</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-timezone-selector/dist/angular-timezone-selector.css" media="screen">
+  </head>
+  <body ng-app="demoApp">
+    <section class="page-header">
+      <h1 class="project-name">Angular-timezone-selector</h1>
+      <h2 class="project-tagline">Autocomplete selector for timezones in Angular JS</h2>
+      <h2>An open source release from <a class="logo" href='https://mish.guru' target="_blank">mish guru</a></h2>
+    </section>
+
+    <section class="main-content">
+    
+    <h2>Demo</h2>
+      <div ng-controller="AppCtrl" class="demo">
+        <p>Selected timezone: <b>{{timezone}}<b></p>
+        <timezone-selector ng-model="timezone"/>
+      </div>
+
+      <h4>Demo Source</h4>
+
+      <pre>
+        &lt;p&gt;Selected timezone: &lt;b&gt;&#123;&#123; timezone &#125;&#125;&lt;b&gt;&lt;/p&gt;
+        &lt;timezone-selector ng-model=&quot;timezone&quot;&#47;&gt;
+      </pre>
+    
+
+    <h3>Install</h3>
+    <pre>bower install angular-timezone-selector</pre>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/mishguruorg/angular-timezone-selector">Angular-timezone-selector</a> was created with &#9829; by <a class="logo" href="http://mish.guru">mish guru</a>.</span>
+      </footer>
+
+    </section>
+
+  <script type="text/javascript" src='bower_components/jquery/dist/jquery.min.js'></script>
+  <script type="text/javascript" src='bower_components/moment/moment.js'></script>
+  <script type="text/javascript" src='bower_components/moment-timezone/builds/moment-timezone-with-data.js'></script>
+  <script type="text/javascript" src='bower_components/chosen/chosen.jquery.min.js'></script>
+  <script type="text/javascript" src='bower_components/lodash/lodash.min.js'></script>
+  <script type="text/javascript" src='bower_components/angular/angular.js'></script>
+  <script type="text/javascript" src='bower_components/angular-timezone-selector/dist/angular-timezone-selector.js'></script>
+  <script type="text/javascript" src='js/app.js'></script>
+  </body>
+</html>
+
