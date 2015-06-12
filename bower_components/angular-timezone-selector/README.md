@@ -6,7 +6,15 @@ The user is able to choose their timezone by either typing the name of their cou
 
 The angular model that is bound to this directive will be set to the timezone name as used by [moment-timezone](http://momentjs.com/timezone/docs/) i.e `Pacific/Auckland`.
 
+[View Demo](http://mishguruorg.github.io/angular-timezone-selector/)
+
 ## Usage
+
+Install using bower
+
+```
+bower install angular-timezone-selector
+```
 
 Make your Angular module depend on module `angular-timezone-selector`.
 

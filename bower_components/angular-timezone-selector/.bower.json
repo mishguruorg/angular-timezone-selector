@@ -1,6 +1,6 @@
 {
   "name": "angular-timezone-selector",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "homepage": "https://github.com/mishguruorg/angular-timezone-selector",
   "authors": [
     "Ashok Fernandez <ashok@mish.guru>"
@@ -30,14 +30,14 @@
     "chosen": "~1.4.2",
     "bootstrap": "~3.3.4"
   },
-  "_release": "1.0.0",
+  "_release": "1.0.3",
   "_resolution": {
     "type": "version",
-    "tag": "1.0.0",
-    "commit": "7b59da0b6bfbab35516a1b0a28e29fd1771e6143"
+    "tag": "1.0.3",
+    "commit": "f05cc418da643f00ade6d6cb894f8f8dea1f42ac"
   },
   "_source": "git://github.com/mishguruorg/angular-timezone-selector.git",
-  "_target": "~1.0.0",
+  "_target": "~1.0.3",
   "_originalSource": "angular-timezone-selector",
   "_direct": true
 }
