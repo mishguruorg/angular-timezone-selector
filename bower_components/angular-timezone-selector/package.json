@@ -1,0 +1,40 @@
+{
+  "name": "angular-timezone-selector",
+  "version": "1.0.1",
+  "description": "AngularJS timezone select",
+  "main": "dist/angular-timezone-selector.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mishguruorg/angular-country-selector.git"
+  },
+  "keywords": [
+    "angular",
+    "timezone",
+    "select"
+  ],
+  "author": "Ashok Fernandez <ashok@mish.guru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mishguruorg/angular-country-selector/issues"
+  },
+  "homepage": "https://github.com/mishguruorg/angular-timezone-selector",
+  "devDependencies": {
+    "lodash": "latest",
+    "uglify-js": "latest",
+    "grunt": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-string-replace": "~1.0.0",
+    "csv": "^0.4.1",
+    "csv-load-sync": "0.0.3"
+  },
+  "dependencies": {
+    "grunt-autoprefixer": "^3.0.3",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-cssmin": "^0.12.3",
+    "grunt-contrib-less": "^1.0.1"
+  }
+}
