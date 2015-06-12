@@ -62,6 +62,9 @@ angular.module('angular-timezone-selector', [])
           data.push(zonesForCountry)
         })
 
+        // Sort by country name
+        data = _.sortBy(data, 'text')
+
         // Construct a select box with the timezones grouped by country
         _.forEach(data, function (group) {
           var $optgroup = $('<optgroup label="' + group.text + '">')

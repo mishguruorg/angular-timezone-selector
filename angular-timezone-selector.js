@@ -62,6 +62,9 @@ angular.module('angular-timezone-selector', [])
           data.push(zonesForCountry)
         })
 
+        // Sort by country name
+        data = _.sortBy(data, 'text')
+
         // Construct a select box with the timezones grouped by country
         _.forEach(data, function (group) {
           var $optgroup = $('<optgroup label="' + group.text + '">')
@@ -77,7 +80,7 @@ angular.module('angular-timezone-selector', [])
           width: '300px',
           include_group_label_in_selected: true,
           search_contains: true,
-          no_results_text: 'No results, try searching for the name of your country.'
+          no_results_text: 'No results, try searching for the name of your country or nearest major city.'
         })
 
         // Update the box if ngModel changes
