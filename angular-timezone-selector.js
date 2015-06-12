@@ -33,7 +33,7 @@ angular.module('angular-timezone-selector', [])
   .directive('timezoneSelect', ['_', 'timezones', 'zoneToCC', 'CCToCountryName', function (_, timezones, zoneToCC, CCToCountryName) {
     return {
       restrict: 'E',
-      template: '<select></select>',
+      template: '<select style="min-width:300px;"></select>',
       replace: true,
       link: function (scope, elem, attrs) {
         var data = []
@@ -76,7 +76,9 @@ angular.module('angular-timezone-selector', [])
           elem.append($optgroup)
         })
 
-        elem.chosen()
+        elem.chosen({
+          width: '300px'
+        })
 
         // elem.select2({
         //   data: data,
