@@ -243,3 +243,12 @@ a {
 @media screen and (max-width: 42em) {
   .site-footer {
     font-size: 0.9rem; } }
+
+@import url(http://fonts.googleapis.com/css?family=Raleway:900);
+
+.logo {
+  margin-bottom: 2rem;
+  font-family: 'Raleway';
+  font-weight: 900;
+  color: rgb(41, 255, 142);
+}
