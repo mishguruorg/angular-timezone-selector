@@ -41,8 +41,7 @@ angular.module('angular-timezone-selector', [])
       },
       link: function ($scope, elem, attrs) {
         var data = []
-        
-        
+
         // Group the timezones by their country code
         var timezonesGroupedByCC = {}
         _.forEach(timezones, function (timezone) {
@@ -56,7 +55,7 @@ angular.module('angular-timezone-selector', [])
         // Add the grouped countries to the data array with their country name as the group option
         _.forEach(timezonesGroupedByCC, function (zonesByCountry, CC) {
           var zonesForCountry = {
-            text: CCToCountryName[CC],
+            text: CCToCountryName[CC] + ': ',
             children: zonesByCountry
           }
 
@@ -73,22 +72,17 @@ angular.module('angular-timezone-selector', [])
           elem.append($optgroup)
         })
 
-
         // Initialise the chosen box
-
-        elem.on('change', function () {
-            
-            console.log(this.value)
-          })
-        
         elem.chosen({
-          width: '300px'
+          width: '300px',
+          include_group_label_in_selected: true,
+          search_contains: true,
+          no_results_text: 'No results, try searching for the name of your country.'
         })
 
-        
+        // Update the box if ngModel changes
         $scope.$watch('ngModel', function () {
           elem.val($scope.ngModel)
-          // console.log($scope)
           elem.trigger('chosen:updated')
         })
       }
