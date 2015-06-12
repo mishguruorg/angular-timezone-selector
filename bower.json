@@ -28,7 +28,6 @@
     "moment-timezone": "~0.4.0",
     "lodash": "~3.9.3",
     "chosen": "~1.4.2",
-    "bootstrap": "~3.3.4",
-    "v1.0": "https://github.com/alxlit/bootstrap-chosen/releases/tag/v1.0.1"
+    "bootstrap": "~3.3.4"
   }
 }
