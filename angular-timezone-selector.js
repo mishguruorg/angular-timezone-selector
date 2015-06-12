@@ -30,14 +30,19 @@ angular.module('angular-timezone-selector', [])
     })
     return codeMap
   }])
-  .directive('timezoneSelect', ['_', 'timezones', 'zoneToCC', 'CCToCountryName', function (_, timezones, zoneToCC, CCToCountryName) {
+  .directive('timezoneSelector', ['_', 'timezones', 'zoneToCC', 'CCToCountryName', function (_, timezones, zoneToCC, CCToCountryName) {
     return {
       restrict: 'E',
-      template: '<select style="min-width:300px;"></select>',
       replace: true,
-      link: function (scope, elem, attrs) {
+      template: '<select style="min-width:300px;"></select>',
+      // require: 'ngModel',
+      scope: {
+        ngModel: '='
+      },
+      link: function ($scope, elem, attrs) {
         var data = []
-
+        
+        
         // Group the timezones by their country code
         var timezonesGroupedByCC = {}
         _.forEach(timezones, function (timezone) {
@@ -50,49 +55,34 @@ angular.module('angular-timezone-selector', [])
 
         // Add the grouped countries to the data array with their country name as the group option
         _.forEach(timezonesGroupedByCC, function (zonesByCountry, CC) {
-          var countryName = CCToCountryName[CC]
-
-          // var searchTerms = countryName.toUpperCase() + ' ' + CC + ' '
-          // _.forEach(zonesByCountry, function (zone, key) {
-          //   console.log(zone + ' ' + key)
-          //   searchTerms += ' ' + zone.id.toUpperCase()
-          // })
-
           var zonesForCountry = {
-            text: countryName,
-            children: zonesByCountry,
-            searchTerms: countryName
+            text: CCToCountryName[CC],
+            children: zonesByCountry
           }
 
           data.push(zonesForCountry)
         })
 
+        // Construct a select box with the timezones grouped by country
         _.forEach(data, function (group) {
           var $optgroup = $('<optgroup label="' + group.text + '">')
           group.children.forEach(function (option) {
-            $optgroup.append('<option name="' + option.id + '">' +
+            $optgroup.append('<option value="' + option.id + '">' +
               option.name + '</option>')
           })
           elem.append($optgroup)
         })
 
+        // Initialise the chosen box
         elem.chosen({
           width: '300px'
         })
 
-        // elem.select2({
-        //   data: data,
-        //   theme: 'classic',
-        //   formatSelection: function (selection) {
-        //     return selection.id
-        //   },
-        //   formatResult: function (result) {
-        //     if (!result.id) {
-        //       return result.text
-        //     }
-        //     return '<strong>' + result.name + '</strong>  <small>' + result.offset + '</small>'
-        //   },
-        // })
+        // Update the box if ngModel changes
+        $scope.$watch('ngModel', function () {
+          elem.val($scope.ngModel)
+          elem.trigger('chosen:updated')
+        })
       }
     }
   }])
