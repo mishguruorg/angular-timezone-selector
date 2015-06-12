@@ -6,7 +6,7 @@
     "Ashok Fernandez <ashok@mish.guru>"
   ],
   "description": "Timezone selector for Angular JS",
-  "main": "dist/angular-timezone-selector.min.js",
+  "main": "dist/angular-timezone-selector.js",
   "keywords": [
     "timezone",
     "select"

@@ -1,5 +1,5 @@
 /*global angular, _, moment, $*/
-angular.module('angular-timezone-select', [])
+angular.module('angular-timezone-selector', [])
   .constant('_', _)
   .constant('moment', moment)
   .factory('timezones', ['_', 'moment', function (_, moment) {
@@ -33,7 +33,7 @@ angular.module('angular-timezone-select', [])
   .directive('timezoneSelect', ['_', 'timezones', 'zoneToCC', 'CCToCountryName', function (_, timezones, zoneToCC, CCToCountryName) {
     return {
       restrict: 'E',
-      template: '<input>',
+      template: '<select></select>',
       replace: true,
       link: function (scope, elem, attrs) {
         var data = []
@@ -67,41 +67,28 @@ angular.module('angular-timezone-select', [])
           data.push(zonesForCountry)
         })
 
-        elem.select2({
-          data: data,
-          theme: 'classic',
-          formatSelection: function (selection) {
-            return selection.id
-          },
-          formatResult: function (result) {
-            if (!result.id) {
-              return result.text
-            }
-            return '<strong>' + result.name + '</strong>  <small>' + result.offset + '</small>'
-          },
-          matcher: function (params, data) {
-            console.log(params)
-            console.log(data)
-             // If there are no search terms, return all of the data
-              if ($.trim(params.term) === '') {
-                return data;
-              }
-             
-              // `params.term` should be the term that is used for searching
-              // `data.text` is the text that is displayed for the data object
-              if (data.text.indexOf(params.term) > -1) {
-                var modifiedData = $.extend({}, data, true);
-                modifiedData.text += ' (matched)';
-             
-                // You can return modified objects from here
-                // This includes matching the `children` how you want in nested data sets
-                return modifiedData;
-              }
-             
-              // Return `null` if the term should not be displayed
-              return null;
-          }
+        _.forEach(data, function (group) {
+          var $optgroup = $('<optgroup label="' + group.text + '">')
+          group.children.forEach(function (option) {
+            $optgroup.append('<option name="' + option.id + '">' +
+              option.name + '</option>')
+          })
+          elem.append($optgroup)
         })
+
+        // elem.select2({
+        //   data: data,
+        //   theme: 'classic',
+        //   formatSelection: function (selection) {
+        //     return selection.id
+        //   },
+        //   formatResult: function (result) {
+        //     if (!result.id) {
+        //       return result.text
+        //     }
+        //     return '<strong>' + result.name + '</strong>  <small>' + result.offset + '</small>'
+        //   },
+        // })
       }
     }
   }])
