@@ -29,6 +29,6 @@ Then use directive `timezone-selector`.
 ```
 
 # Attributions
-Inspired by (angular-timezone-select)[https://github.com/alexcheng1982/angular-timezone-select] from [alexcheng1982](https://github.com/alexcheng1982).
+Inspired by [angular-timezone-select](https://github.com/alexcheng1982/angular-timezone-select) from [alexcheng1982](https://github.com/alexcheng1982).
 
-Styled using the examples from (bootstrap-chosen)[https://github.com/alxlit/bootstrap-chosen] by [alxlit](https://github.com/alxlit)
+Styled using the examples from [bootstrap-chosen](https://github.com/alxlit/bootstrap-chosen) by [alxlit](https://github.com/alxlit)
