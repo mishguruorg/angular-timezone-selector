@@ -200,7 +200,8 @@
 "SK","Slovakia"
 "SI","Slovenia"
 "SB","Solomon Islands"
-"SO","Somalia"
+"SO","Somalia",
+"SS","South Sudan"
 "ZA","South Africa"
 "GS","South Georgia And Sandwich Isl."
 "ES","Spain"
@@ -244,3 +245,7 @@
 "YE","Yemen"
 "ZM","Zambia"
 "ZW","Zimbabwe
+"SX","Sint Maarten"
+"CW","Curacao"
+"BQ","Bonaire, Sint Eustatius and Saba"
+"KP","North Korea"
