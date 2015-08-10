@@ -1,7 +1,7 @@
 {
   "name": "angular-timezone-selector",
   "version": "1.0.1",
-  "description": "AngularJS timezone select",
+  "description": "AngularJS timezone selector",
   "main": "dist/angular-timezone-selector.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
