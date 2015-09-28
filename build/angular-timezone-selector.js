@@ -16,10 +16,12 @@ angular.module('angular-timezone-selector', [])
   .factory('timezones', ['_', 'moment', function (_, moment) {
     var timezoneMap = {}
     _.forEach(moment.tz.names(), function (zoneName) {
+      var tz=moment.tz(zoneName);
       timezoneMap[zoneName] = {
         id: zoneName,
         name: zoneName.replace(/_/g, ' '),
-        offset: 'UTC' + moment().tz(zoneName).format('Z')
+        offset: 'UTC' + tz.format('Z'),
+        nOffset: tz.utcOffset()
       }
     })
     return timezoneMap
@@ -73,19 +75,61 @@ angular.module('angular-timezone-selector', [])
         _.forEach(timezonesGroupedByCC, function (zonesByCountry, CC) {
           var zonesForCountry = {
             text: CCToCountryName[CC] + ': ',
-            children: zonesByCountry
+            children: zonesByCountry,
+            firstNOffset: zonesByCountry[0].nOffset
           }
 
           data.push(zonesForCountry)
         })
 
-        // Sort by country name
-        data = _.sortBy(data, 'text')
+        // Sort by UTC or country name
+        if (attrs.sortBy=="offset"){
+            data = _.sortBy(data, 'firstNOffset');
+            _.forEach(data,function(zonesForCountry,key){
+                zonesForCountry.children=_.sortBy(zonesForCountry.children, 'nOffset');
+            });
+        } else {
+            data = _.sortBy(data, 'text')
+        }
+
+        // add initial options forlocal
+        if (attrs.showLocal!=undefined){
+            if (jstz!=undefined){
+                var extraTZs = _.where(timezones,{'name':jstz.determine().name() });
+            } else {
+                var localUTC = 'UTC'+moment().format('Z');
+                var extraTZs = _.where(timezones,{'offset':localUTC});
+            }
+            data.splice(0,0,{
+              text: 'Local' + ': ',
+              children: extraTZs,
+              firstNOffset: extraTZs[0].nOffset,
+              firstOffset: extraTZs[0].offset
+          })
+        }
+
+        // add initial options
+        if (attrs.primaryChoices!=undefined){
+            // var primaryChoices=['UTC','GB','WET','GMT','Asia/Macau']
+            var primaryChoices = attrs.primaryChoices.split(' ');
+            var extraTZs = _.filter(timezones,function(tz){return _.contains(primaryChoices,tz.name)});
+            data.splice(0,0,{
+              text: 'Primary' + ': ',
+              children: extraTZs,
+              firstNOffset: extraTZs[0].nOffset,
+              firstOffset: extraTZs[0].offset
+            })
+        }
 
         // Construct a select box with the timezones grouped by country
         _.forEach(data, function (group) {
           var $optgroup = $('<optgroup label="' + group.text + '">')
           group.children.forEach(function (option) {
+
+            if (attrs.displayUtc=="true" && !option.name.includes('(UTC')){
+                option.name = option.name + ' (' + option.offset+')';
+            }
+
             $optgroup.append('<option value="' + option.id + '">' +
               option.name + '</option>')
           })
