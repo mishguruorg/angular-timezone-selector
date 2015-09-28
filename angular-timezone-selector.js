@@ -16,10 +16,12 @@ angular.module('angular-timezone-selector', [])
   .factory('timezones', ['_', 'moment', function (_, moment) {
     var timezoneMap = {}
     _.forEach(moment.tz.names(), function (zoneName) {
+      var tz=moment.tz(zoneName);
       timezoneMap[zoneName] = {
         id: zoneName,
         name: zoneName.replace(/_/g, ' '),
-        offset: 'UTC' + moment().tz(zoneName).format('Z')
+        offset: 'UTC' + tz.format('Z'),
+        nOffset: tz.utcOffset()
       }
     })
     return timezoneMap
@@ -74,6 +76,8 @@ angular.module('angular-timezone-selector', [])
           var zonesForCountry = {
             text: CCToCountryName[CC] + ': ',
             children: zonesByCountry
+            firstNOffset: zonesByCountry[0].nOffset,
+            firstOffset: zonesByCountry[0].offset
           }
 
           data.push(zonesForCountry)
