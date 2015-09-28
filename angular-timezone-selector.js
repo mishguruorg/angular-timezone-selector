@@ -75,8 +75,8 @@ angular.module('angular-timezone-selector', [])
         _.forEach(timezonesGroupedByCC, function (zonesByCountry, CC) {
           var zonesForCountry = {
             text: CCToCountryName[CC] + ': ',
-            children: zonesByCountry
-            firstNOffset: zonesByCountry[0].nOffset,
+            children: zonesByCountry,
+            firstNOffset: zonesByCountry[0].nOffset
           }
 
           data.push(zonesForCountry)
