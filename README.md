@@ -59,6 +59,8 @@ The screenshot below show angular-selector in action with all options enabled:
 #### With Thanks To
 [M Clark](https://github.com/wassname) for adding options for primary & local timezones, and the ability to show and sort by offset.
 
+[a-k-g](https://github.com/a-k-g) for fixing syntax error in data file and reminding me to update the bower tags!
+
 #### Attributions
 Inspired by [angular-timezone-select](https://github.com/alexcheng1982/angular-timezone-select) from [alexcheng1982](https://github.com/alexcheng1982).
 
