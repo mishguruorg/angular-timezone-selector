@@ -53,7 +53,13 @@ An example of using the options is below:
 The screenshot below show angular-selector in action with all options enabled:
 <img src="./images/primary_local_selection.png" alt-text="Angular-selector in action with all options enabled"></img>
 
-# Attributions
+## Author
+[Ashok Fernandez](https://github.com/ashokfernandez)
+
+#### With Thanks To
+[M Clark](https://github.com/wassname) for adding options for primary & local timezones, and the ability to show and sort by offset.
+
+#### Attributions
 Inspired by [angular-timezone-select](https://github.com/alexcheng1982/angular-timezone-select) from [alexcheng1982](https://github.com/alexcheng1982).
 
 Styled using the examples from [bootstrap-chosen](https://github.com/alxlit/bootstrap-chosen) by [alxlit](https://github.com/alxlit)
