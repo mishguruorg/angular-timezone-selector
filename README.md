@@ -8,6 +8,11 @@ The angular model that is bound to this directive will be set to the timezone na
 
 [View Demo](http://mishguruorg.github.io/angular-timezone-selector/)
 
+## Contributing
+If you have a feature or fix please submit a pull request! This repo follows JavaScript standard style, please make sure all pull requests comply to this before submitting them.
+
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
 ## Usage
 
 Install using bower
@@ -52,6 +57,7 @@ An example of using the options is below:
 ## Screenshot
 The screenshot below show angular-selector in action with all options enabled:
 <img src="./images/primary_local_selection.png" alt-text="Angular-selector in action with all options enabled"></img>
+
 
 ## Author
 [Ashok Fernandez](https://github.com/ashokfernandez)
