@@ -95,7 +95,7 @@ angular.module('angular-timezone-selector', [])
         // add initial options forlocal
         if (attrs.showLocal!=undefined){
             if (jstz!=undefined){
-                var extraTZs = _.where(timezones,{'name':jstz.determine().name() });
+                var extraTZs = _.where(timezones,{'id':jstz.determine().name() });
             } else {
                 var localUTC = 'UTC'+moment().format('Z');
                 var extraTZs = _.where(timezones,{'offset':localUTC});
