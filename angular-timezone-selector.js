@@ -97,7 +97,7 @@ angular.module('angular-timezone-selector', [])
             var extraTZs = _.where(timezones, { 'id': jstz.determine().name() })
           } else {
             var localUTC = 'UTC' + moment().format('Z')
-            var extraTZs = _.where(timezones, {'offset': localUTC})
+            extraTZs = _.where(timezones, {'offset': localUTC})
           }
 
           data.splice(0, 0, {
@@ -112,7 +112,7 @@ angular.module('angular-timezone-selector', [])
         if (attrs.primaryChoices !== undefined) {
           // var primaryChoices=['UTC','GB','WET','GMT','Asia/Macau']
           var primaryChoices = attrs.primaryChoices.split(' ')
-          var extraTZs = _.filter(timezones, function (tz) { return _.contains(primaryChoices, tz.name) })
+          extraTZs = _.filter(timezones, function (tz) { return _.contains(primaryChoices, tz.name) })
 
           data.splice(0, 0, {
             text: 'Primary' + ': ',
