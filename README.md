@@ -13,6 +13,8 @@ If you have a feature or fix please submit a pull request! This repo follows Jav
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
+![](https://circleci.com/gh/mishguruorg/angular-timezone-selector.svg?style=shield&circle-token=88c9151402abac0c3494528c4c91962538b8d5e2)
+
 ## Usage
 
 Install using bower
@@ -66,6 +68,8 @@ The screenshot below show angular-selector in action with all options enabled:
 [M Clark](https://github.com/wassname) for adding options for primary & local timezones, and the ability to show and sort by offset.
 
 [a-k-g](https://github.com/a-k-g) for fixing syntax error in data file and reminding me to update the bower tags!
+
+[Tom Grooffer](https://github.com/tomgrooffer) for fixing a crash with JSTZ
 
 #### Attributions
 Inspired by [angular-timezone-select](https://github.com/alexcheng1982/angular-timezone-select) from [alexcheng1982](https://github.com/alexcheng1982).
