@@ -4,7 +4,7 @@
   "description": "AngularJS timezone selector",
   "main": "dist/angular-timezone-selector.min.js",
   "scripts": {
-    "test": "standard ."
+    "test": "./node_modules/.bin/standard"
   },
   "repository": {
     "type": "git",
