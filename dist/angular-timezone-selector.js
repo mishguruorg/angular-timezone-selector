@@ -26,7 +26,6 @@ angular.module('angular-timezone-selector', [])
             nOffset: tz.utcOffset()
           }
         })
-        console.log('returning new timezoneMap')
         return timezoneMap
       }
     }
