@@ -15,7 +15,7 @@ angular.module('angular-timezone-selector', [])
   .constant('moment', moment)
   .factory('timezoneFactory', ['_', 'moment', function (_, moment) {
     return {
-      get: function() {
+      get: function () {
         var timezoneMap = {}
         _.forEach(moment.tz.names(), function (zoneName) {
           var tz = moment.tz(zoneName)
