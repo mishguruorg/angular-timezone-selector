@@ -13,18 +13,23 @@
 angular.module('angular-timezone-selector', [])
   .constant('_', _)
   .constant('moment', moment)
-  .factory('timezones', ['_', 'moment', function (_, moment) {
-    var timezoneMap = {}
-    _.forEach(moment.tz.names(), function (zoneName) {
-      var tz = moment.tz(zoneName)
-      timezoneMap[zoneName] = {
-        id: zoneName,
-        name: zoneName.replace(/_/g, ' '),
-        offset: 'UTC' + tz.format('Z'),
-        nOffset: tz.utcOffset()
+  .factory('timezoneFactory', ['_', 'moment', function (_, moment) {
+    return {
+      get: function() {
+        var timezoneMap = {}
+        _.forEach(moment.tz.names(), function (zoneName) {
+          var tz = moment.tz(zoneName)
+          timezoneMap[zoneName] = {
+            id: zoneName,
+            name: zoneName.replace(/_/g, ' '),
+            offset: 'UTC' + tz.format('Z'),
+            nOffset: tz.utcOffset()
+          }
+        })
+        console.log('returning new timezoneMap')
+        return timezoneMap
       }
-    })
-    return timezoneMap
+    }
   }])
 
   // Timezone name to country codemap
@@ -49,7 +54,7 @@ angular.module('angular-timezone-selector', [])
     return codeMap
   }])
 
-  .directive('timezoneSelector', ['_', 'timezones', 'zoneToCC', 'CCToCountryName', function (_, timezones, zoneToCC, CCToCountryName) {
+  .directive('timezoneSelector', ['_', 'timezoneFactory', 'zoneToCC', 'CCToCountryName', function (_, timezoneFactory, zoneToCC, CCToCountryName) {
     return {
       restrict: 'E',
       replace: true,
@@ -59,6 +64,7 @@ angular.module('angular-timezone-selector', [])
       },
       link: function ($scope, elem, attrs) {
         var data = []
+        var timezones = timezoneFactory.get()
 
         // Group the timezones by their country code
         var timezonesGroupedByCC = {}

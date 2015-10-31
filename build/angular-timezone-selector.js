@@ -1,4 +1,4 @@
-/*global angular, _, moment, $*/
+/*global angular, _, moment, $, jstz*/
 
 /**
  * angular-timezone-selector
@@ -13,18 +13,23 @@
 angular.module('angular-timezone-selector', [])
   .constant('_', _)
   .constant('moment', moment)
-  .factory('timezones', ['_', 'moment', function (_, moment) {
-    var timezoneMap = {}
-    _.forEach(moment.tz.names(), function (zoneName) {
-      var tz=moment.tz(zoneName);
-      timezoneMap[zoneName] = {
-        id: zoneName,
-        name: zoneName.replace(/_/g, ' '),
-        offset: 'UTC' + tz.format('Z'),
-        nOffset: tz.utcOffset()
+  .factory('timezoneFactory', ['_', 'moment', function (_, moment) {
+    return {
+      get: function() {
+        var timezoneMap = {}
+        _.forEach(moment.tz.names(), function (zoneName) {
+          var tz = moment.tz(zoneName)
+          timezoneMap[zoneName] = {
+            id: zoneName,
+            name: zoneName.replace(/_/g, ' '),
+            offset: 'UTC' + tz.format('Z'),
+            nOffset: tz.utcOffset()
+          }
+        })
+        console.log('returning new timezoneMap')
+        return timezoneMap
       }
-    })
-    return timezoneMap
+    }
   }])
 
   // Timezone name to country codemap
@@ -36,7 +41,6 @@ angular.module('angular-timezone-selector', [])
       zoneMap[zone.name] = zone.cca2
     })
     return zoneMap
-
   }])
 
   // Country code to country name map
@@ -50,7 +54,7 @@ angular.module('angular-timezone-selector', [])
     return codeMap
   }])
 
-  .directive('timezoneSelector', ['_', 'timezones', 'zoneToCC', 'CCToCountryName', function (_, timezones, zoneToCC, CCToCountryName) {
+  .directive('timezoneSelector', ['_', 'timezoneFactory', 'zoneToCC', 'CCToCountryName', function (_, timezoneFactory, zoneToCC, CCToCountryName) {
     return {
       restrict: 'E',
       replace: true,
@@ -60,6 +64,7 @@ angular.module('angular-timezone-selector', [])
       },
       link: function ($scope, elem, attrs) {
         var data = []
+        var timezones = timezoneFactory.get()
 
         // Group the timezones by their country code
         var timezonesGroupedByCC = {}
@@ -83,51 +88,52 @@ angular.module('angular-timezone-selector', [])
         })
 
         // Sort by UTC or country name
-        if (attrs.sortBy=="offset"){
-            data = _.sortBy(data, 'firstNOffset');
-            _.forEach(data,function(zonesForCountry,key){
-                zonesForCountry.children=_.sortBy(zonesForCountry.children, 'nOffset');
-            });
+        if (attrs.sortBy === 'offset') {
+          data = _.sortBy(data, 'firstNOffset')
+          _.forEach(data, function (zonesForCountry, key) {
+            zonesForCountry.children = _.sortBy(zonesForCountry.children, 'nOffset')
+          })
         } else {
-            data = _.sortBy(data, 'text')
+          data = _.sortBy(data, 'text')
         }
 
         // add initial options forlocal
-        if (attrs.showLocal!=undefined){
-            if (jstz!=undefined){
-                var extraTZs = _.where(timezones,{'id':jstz.determine().name() });
-            } else {
-                var localUTC = 'UTC'+moment().format('Z');
-                var extraTZs = _.where(timezones,{'offset':localUTC});
-            }
-            data.splice(0,0,{
-              text: 'Local' + ': ',
-              children: extraTZs,
-              firstNOffset: extraTZs[0].nOffset,
-              firstOffset: extraTZs[0].offset
+        if (attrs.showLocal !== undefined) {
+          if (jstz !== undefined) {
+            var extraTZs = _.where(timezones, { 'id': jstz.determine().name() })
+          } else {
+            var localUTC = 'UTC' + moment().format('Z')
+            extraTZs = _.where(timezones, {'offset': localUTC})
+          }
+
+          data.splice(0, 0, {
+            text: 'Local' + ': ',
+            children: extraTZs,
+            firstNOffset: extraTZs[0].nOffset,
+            firstOffset: extraTZs[0].offset
           })
         }
 
         // add initial options
-        if (attrs.primaryChoices!=undefined){
-            // var primaryChoices=['UTC','GB','WET','GMT','Asia/Macau']
-            var primaryChoices = attrs.primaryChoices.split(' ');
-            var extraTZs = _.filter(timezones,function(tz){return _.contains(primaryChoices,tz.name)});
-            data.splice(0,0,{
-              text: 'Primary' + ': ',
-              children: extraTZs,
-              firstNOffset: extraTZs[0].nOffset,
-              firstOffset: extraTZs[0].offset
-            })
+        if (attrs.primaryChoices !== undefined) {
+          // var primaryChoices=['UTC','GB','WET','GMT','Asia/Macau']
+          var primaryChoices = attrs.primaryChoices.split(' ')
+          extraTZs = _.filter(timezones, function (tz) { return _.contains(primaryChoices, tz.name) })
+
+          data.splice(0, 0, {
+            text: 'Primary' + ': ',
+            children: extraTZs,
+            firstNOffset: extraTZs[0].nOffset,
+            firstOffset: extraTZs[0].offset
+          })
         }
 
         // Construct a select box with the timezones grouped by country
         _.forEach(data, function (group) {
           var $optgroup = $('<optgroup label="' + group.text + '">')
           group.children.forEach(function (option) {
-
-            if (attrs.displayUtc=="true" && !option.name.includes('(UTC')){
-                option.name = option.name + ' (' + option.offset+')';
+            if (attrs.displayUtc === 'true' && !option.name.includes('(UTC')) {
+              option.name = option.name + ' (' + option.offset + ')'
             }
 
             $optgroup.append('<option value="' + option.id + '">' +
