@@ -59,7 +59,8 @@ angular.module('angular-timezone-selector', [])
       replace: true,
       template: '<select style="min-width:300px;"></select>',
       scope: {
-        ngModel: '='
+        ngModel: '=',
+        placeholder: '='
       },
       link: function ($scope, elem, attrs) {
         var data = []
@@ -147,7 +148,7 @@ angular.module('angular-timezone-selector', [])
           include_group_label_in_selected: true,
           search_contains: true,
           no_results_text: 'No results, try searching for the name of your country or nearest major city.',
-          placeholder_text_single: 'Choose a timezone'
+          placeholder_text_single: $scope.placeholder
         })
 
         // Update the box if ngModel changes
