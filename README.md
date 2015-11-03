@@ -56,6 +56,11 @@ An example of using the options is below:
 ></timezone-selector>
 ```
 
+## Screenshot
+The screenshot below show angular-selector in action with all options enabled:
+<img src="./images/primary_local_selection.png" alt-text="Angular-selector in action with all options enabled"></img>
+
+## Custom placeholder:
 An example of using a custom placeholder message:
 
 ```html
@@ -90,11 +95,6 @@ or with translate:
 </div>
 ```
 
-## Screenshot
-The screenshot below show angular-selector in action with all options enabled:
-<img src="./images/primary_local_selection.png" alt-text="Angular-selector in action with all options enabled"></img>
-
-With a custom placeholder:
 <img src="./images/custom_placeholder.png" alt-text="Angular-selector in action with a custom placeholder"></img>
 
 ## Author
