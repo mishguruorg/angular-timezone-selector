@@ -71,7 +71,24 @@ An example of using a custom placeholder message:
         required>
     </timezone-selector>
 </div>
+```
+
+or with translate:
+
 ```html
+<div ng-init="translations.placeholder = ('TIMEZONE_PLACEHOLDER' | translate)">
+    <timezone-selector
+        ng-model="result"
+        translations="translations"
+        display-utc="true"
+        sort-by="offset"
+        show-local="true"
+        primary-choices="UTC GB WET GMT Asia/Macau"
+        name="timezone"
+        required>
+    </timezone-selector>
+</div>
+```
 
 ## Screenshot
 The screenshot below show angular-selector in action with all options enabled:
