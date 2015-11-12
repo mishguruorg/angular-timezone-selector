@@ -107,7 +107,7 @@ or with translate:
 
 [Tom Grooffer](https://github.com/tomgrooffer) for fixing a crash with JSTZ
 
-[karlhass](https://github.com/karlhaas) for fixing a crash when two instances were present on the same page
+[karlhass](https://github.com/karlhaas) for fixing a crash when two instances were present on the same page and adding injectable strings and translations
 
 #### Attributions
 Inspired by [angular-timezone-select](https://github.com/alexcheng1982/angular-timezone-select) from [alexcheng1982](https://github.com/alexcheng1982).
