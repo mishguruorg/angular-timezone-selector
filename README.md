@@ -60,6 +60,42 @@ An example of using the options is below:
 The screenshot below show angular-selector in action with all options enabled:
 <img src="./images/primary_local_selection.png" alt-text="Angular-selector in action with all options enabled"></img>
 
+## Custom placeholder:
+An example of using a custom placeholder message:
+
+```html
+<div ng-init="translations.placeholder = 'SeLecT your timezone :)'">
+    <timezone-selector
+        ng-model="result"
+        translations="translations"
+        display-utc="true"
+        sort-by="offset"
+        show-local="true"
+        primary-choices="UTC GB WET GMT Asia/Macau"
+        name="timezone"
+        required>
+    </timezone-selector>
+</div>
+```
+
+or with translate:
+
+```html
+<div ng-init="translations.placeholder = ('TIMEZONE_PLACEHOLDER' | translate)">
+    <timezone-selector
+        ng-model="result"
+        translations="translations"
+        display-utc="true"
+        sort-by="offset"
+        show-local="true"
+        primary-choices="UTC GB WET GMT Asia/Macau"
+        name="timezone"
+        required>
+    </timezone-selector>
+</div>
+```
+
+<img src="./images/custom_placeholder.png" alt-text="Angular-selector in action with a custom placeholder"></img>
 
 ## Author
 [Ashok Fernandez](https://github.com/ashokfernandez)

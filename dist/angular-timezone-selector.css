@@ -160,7 +160,7 @@
 }
 .chosen-container-single .chosen-search {
   margin: 0;
-  padding: 3px 4px;
+  padding: 3px 30px 3px 4px;
   position: relative;
   white-space: nowrap;
   z-index: 1000;
