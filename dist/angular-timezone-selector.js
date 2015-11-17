@@ -53,7 +53,7 @@ angular.module('angular-timezone-selector', [])
     return codeMap
   }])
 
-  .directive('timezoneSelector', ['_', 'timezoneFactory', 'zoneToCC', 'CCToCountryName', function (_, timezoneFactory, zoneToCC, CCToCountryName) {
+  .directive('timezoneSelector', ['_', 'moment', 'timezoneFactory', 'zoneToCC', 'CCToCountryName', function (_, moment, timezoneFactory, zoneToCC, CCToCountryName) {
     return {
       restrict: 'E',
       replace: true,
