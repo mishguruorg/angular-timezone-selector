@@ -144,7 +144,7 @@ angular.module('angular-timezone-selector', [])
 
         // Initialise the chosen box
         elem.chosen({
-          width: '300px',
+          width: attrs.width || '300px',
           include_group_label_in_selected: true,
           search_contains: true,
           no_results_text: _.get($scope, 'translations.no_results_text',
