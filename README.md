@@ -43,7 +43,8 @@ Options can be included as attributes in the html element.
  - **display-utc** ["true"] - This show UTC offsets in the timezone names
  - **show-local** ["true"] - This detects local timezone's and includes at the top. If jsTimezoneDetect is installed if will include the detected timezone otherwise it fallback on moment js and list all timezones with the same browsers UTC offset.
  - **primary-choices** ["space seperated timezone names"] - This lets you put important timezone's at the top of the list or include extra aliases. Use names from momentjs-timezone, which you can list with the command: `moment.tz.names;`.
-
+ - **width** - Sets the width of the element
+ 
 An example of using the options is below:
 
 ```html
@@ -53,6 +54,7 @@ An example of using the options is below:
     sort-by="offset"
     show-local="true"
     primary-choices="UTC GB WET GMT Asia/Macau"
+    width="400px"
 ></timezone-selector>
 ```
 
@@ -108,6 +110,10 @@ or with translate:
 [Tom Grooffer](https://github.com/tomgrooffer) for fixing a crash with JSTZ
 
 [karlhass](https://github.com/karlhaas) for fixing a crash when two instances were present on the same page and adding injectable strings and translations
+
+[G-Lex](https://github.com/G-Lex) for adding the ability to set the width when creating the directive
+
+[Gu1](https://github.com/Gu1) for making sure that moment was properly injected
 
 #### Attributions
 Inspired by [angular-timezone-select](https://github.com/alexcheng1982/angular-timezone-select) from [alexcheng1982](https://github.com/alexcheng1982).
