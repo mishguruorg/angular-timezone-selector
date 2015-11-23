@@ -114,6 +114,12 @@ angular.module('angular-timezone-selector', [])
           })
         }
 
+        if (attrs.setLocal !== undefined) {
+          if (jstz !== undefined) {
+            $scope.ngModel || ($scope.ngModel = jstz.determine().name())
+          }
+        }
+
         // add initial options
         if (attrs.primaryChoices !== undefined) {
           // var primaryChoices=['UTC','GB','WET','GMT','Asia/Macau']
