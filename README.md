@@ -42,9 +42,10 @@ Options can be included as attributes in the html element.
  - **sort-by** ["offset"] - This lets the list be sorted by UTC offset instead of alphabetical order.
  - **display-utc** ["true"] - This show UTC offsets in the timezone names
  - **show-local** ["true"] - This detects local timezone's and includes at the top. If jsTimezoneDetect is installed if will include the detected timezone otherwise it fallback on moment js and list all timezones with the same browsers UTC offset.
+ - **set-local** ["true"] - This sets ngModel to detected timezone if it's not set yet. jsTimezoneDetect must be installed for this option to work.
  - **primary-choices** ["space seperated timezone names"] - This lets you put important timezone's at the top of the list or include extra aliases. Use names from momentjs-timezone, which you can list with the command: `moment.tz.names;`.
  - **width** - Sets the width of the element
- 
+
 An example of using the options is below:
 
 ```html
@@ -53,6 +54,7 @@ An example of using the options is below:
     display-utc="true"
     sort-by="offset"
     show-local="true"
+    set-local="true"
     primary-choices="UTC GB WET GMT Asia/Macau"
     width="400px"
 ></timezone-selector>
