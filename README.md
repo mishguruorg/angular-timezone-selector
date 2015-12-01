@@ -62,6 +62,7 @@ An example of using the options is below:
 
 ## Screenshot
 The screenshot below show angular-selector in action with all options enabled:
+
 <img src="./images/primary_local_selection.png" alt-text="Angular-selector in action with all options enabled"></img>
 
 ## Custom placeholder:
