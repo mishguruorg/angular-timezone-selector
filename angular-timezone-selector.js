@@ -136,16 +136,16 @@ angular.module('angular-timezone-selector', [])
 
         // Construct a select box with the timezones grouped by country
         _.forEach(data, function (group) {
-          var $optgroup = $('<optgroup label="' + group.text + '">')
+          var optgroup = $('<optgroup label="' + group.text + '">')
           group.children.forEach(function (option) {
-            if (attrs.displayUtc === 'true' && !option.name.includes('(UTC')) {
+            if (attrs.displayUtc === 'true' && option.name.indexOf('(UTC') === -1) {
               option.name = option.name + ' (' + option.offset + ')'
             }
 
-            $optgroup.append('<option value="' + option.id + '">' +
+            optgroup.append('<option value="' + option.id + '">' +
               option.name + '</option>')
           })
-          elem.append($optgroup)
+          elem.append(optgroup)
         })
 
         // Initialise the chosen box
