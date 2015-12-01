@@ -124,8 +124,10 @@ angular.module('angular-timezone-selector', [])
 
         // add initial options
         if (attrs.primaryChoices !== undefined) {
-          // var primaryChoices=['UTC','GB','WET','GMT','Asia/Macau']
-          var primaryChoices = attrs.primaryChoices.split(' ')
+          var primaryChoices = []
+          _.forEach(attrs.primaryChoices.split(' '), function (choice) {
+            primaryChoices.push(choice.replace('_', ' '))
+          })
           extraTZs = _.filter(timezones, function (tz) { return _.contains(primaryChoices, tz.name) })
 
           data.splice(0, 0, {
