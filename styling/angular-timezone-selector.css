@@ -11,8 +11,8 @@
   vertical-align: middle;
 }
 .chosen-container .chosen-drop {
-  background: #ffffff;
-  border: 1px solid #cccccc;
+  background: #fff;
+  border: 1px solid #ccc;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
   box-shadow: 0 8px 8px rgba(0, 0, 0, .25);
@@ -100,9 +100,9 @@
   background: url("chosen-sprite.png") no-repeat -22px -3px;
 }
 .chosen-container-single .chosen-single {
-  background-color: #ffffff;
+  background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -166,8 +166,8 @@
   z-index: 1000;
 }
 .chosen-container-single .chosen-search input[type="text"] {
-  background: url("chosen-sprite.png") no-repeat 100% -20px, #ffffff;
-  border: 1px solid #cccccc;
+  background: url("chosen-sprite.png") no-repeat 100% -20px, #fff;
+  border: 1px solid #ccc;
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -188,8 +188,8 @@
   left: -9000px;
 }
 .chosen-container-multi .chosen-choices {
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
+  background-color: #fff;
+  border: 1px solid #ccc;
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -228,7 +228,7 @@
 .chosen-container-multi .chosen-choices .search-choice {
   background-clip: padding-box;
   background-color: #eeeeee;
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -274,7 +274,7 @@
   transition: border linear .2s, box-shadow linear .2s;
 }
 .chosen-container-active.chosen-with-drop .chosen-single {
-  background-color: #ffffff;
+  background-color: #fff;
   border: 1px solid #66afe9;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -359,7 +359,7 @@
   border-right: none;
 }
 .chosen-rtl .chosen-search input[type="text"] {
-  background: url("chosen-sprite.png") no-repeat -28px -20px, #ffffff;
+  background: url("chosen-sprite.png") no-repeat -28px -20px, #fff;
   direction: rtl;
   padding: 4px 5px 4px 20px;
 }
