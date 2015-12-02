@@ -120,6 +120,8 @@ or with translate:
 
 [tiagotex](https://github.com/tiagotex) for adding the ability to set the local timezone as default, and fixing a bug where primary timezones with spaces wouldn't work
 
+[Rémy Dufour](https://github.com/Kilimangaro) for adding Montreal as a timezone
+
 #### Attributions
 Inspired by [angular-timezone-select](https://github.com/alexcheng1982/angular-timezone-select) from [alexcheng1982](https://github.com/alexcheng1982).
 
