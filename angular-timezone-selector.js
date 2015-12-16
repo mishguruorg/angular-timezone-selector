@@ -109,7 +109,7 @@ angular.module('angular-timezone-selector', [])
           }
 
           data.splice(0, 0, {
-            text:  _.get($scope, 'translations.local', 'Local') + ': ',
+            text: _.get($scope, 'translations.local', 'Local') + ': ',
             children: extraTZs,
             firstNOffset: extraTZs[0].nOffset,
             firstOffset: extraTZs[0].offset
