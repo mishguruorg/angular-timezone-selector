@@ -109,7 +109,7 @@ angular.module('angular-timezone-selector', [])
           }
 
           data.splice(0, 0, {
-            text: 'Local' + ': ',
+            text:  _.get($scope, 'translations.local', 'Local') + ': ',
             children: extraTZs,
             firstNOffset: extraTZs[0].nOffset,
             firstOffset: extraTZs[0].offset
@@ -131,7 +131,7 @@ angular.module('angular-timezone-selector', [])
           extraTZs = _.filter(timezones, function (tz) { return _.contains(primaryChoices, tz.name) })
 
           data.splice(0, 0, {
-            text: 'Primary' + ': ',
+            text: _.get($scope, 'translations.primary', 'Primary') + ': ',
             children: extraTZs,
             firstNOffset: extraTZs[0].nOffset,
             firstOffset: extraTZs[0].offset
