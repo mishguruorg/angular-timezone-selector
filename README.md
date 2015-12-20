@@ -122,6 +122,8 @@ or with translate:
 
 [Rémy Dufour](https://github.com/Kilimangaro) for adding Montreal as a timezone
 
+[Akiko Takano](https://github.com/akiko-pusu) for adding more translation support
+
 #### Attributions
 Inspired by [angular-timezone-select](https://github.com/alexcheng1982/angular-timezone-select) from [alexcheng1982](https://github.com/alexcheng1982).
 
