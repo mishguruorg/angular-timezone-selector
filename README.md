@@ -6,7 +6,8 @@ The user is able to choose their timezone by either typing the name of their cou
 
 The angular model that is bound to this directive will be set to the timezone name as used by [moment-timezone](http://momentjs.com/timezone/docs/) i.e `Pacific/Auckland`.
 
-[View Demo](http://mishguruorg.github.io/angular-timezone-selector/)
+### [View Demo](http://mishguruorg.github.io/angular-timezone-selector/)
+### [Plunker Example](https://plnkr.co/edit/99qoqLYUlFVsaIHUbbT8?p=preview)
 
 ## Contributing
 If you have a feature or fix please submit a pull request! This repo follows JavaScript standard style, please make sure all pull requests comply to this before submitting them.
