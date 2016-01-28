@@ -128,7 +128,7 @@ angular.module('angular-timezone-selector', [])
           _.forEach(attrs.primaryChoices.split(' '), function (choice) {
             primaryChoices.push(choice.replace('_', ' '))
           })
-          extraTZs = _.filter(timezones, function (tz) { return _.contains(primaryChoices, tz.name) })
+          extraTZs = _.filter(timezones, function (tz) { return _.includes(primaryChoices, tz.name) })
 
           data.splice(0, 0, {
             text: _.get($scope, 'translations.primary', 'Primary') + ': ',
