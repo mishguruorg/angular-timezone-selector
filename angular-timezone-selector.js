@@ -66,10 +66,10 @@ angular.module('angular-timezone-selector', [])
         var data = []
         var timezones = timezoneFactory.get()
         var defaultTranslations = {
-            local: 'Local',
-            primary: 'Primary',
-            placeholder: 'Choose a timezone',
-            no_results_text: 'No results, try searching for the name of your country or nearest major city.'
+          local: 'Local',
+          primary: 'Primary',
+          placeholder: 'Choose a timezone',
+          no_results_text: 'No results, try searching for the name of your country or nearest major city.'
         }
 
         // Group the timezones by their country code
