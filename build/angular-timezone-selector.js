@@ -102,18 +102,20 @@ angular.module('angular-timezone-selector', [])
           if (jstz !== undefined) {
             // Make sure the tz from jstz has underscores replaced with spaces so it matches
             // the format used in timezoneFactory
-            var extraTZs = _.where(timezones, { 'id': jstz.determine().name().replace(/_/g, ' ') })
+            var extraTZs = _.filter(timezones, { 'id': jstz.determine().name().replace(/_/g, ' ') })
           } else {
             var localUTC = 'UTC' + moment().format('Z')
-            extraTZs = _.where(timezones, {'offset': localUTC})
+            extraTZs = _.filter(timezones, {'offset': localUTC})
           }
 
-          data.splice(0, 0, {
-            text: _.get($scope, 'translations.local', 'Local') + ': ',
-            children: extraTZs,
-            firstNOffset: extraTZs[0].nOffset,
-            firstOffset: extraTZs[0].offset
-          })
+          if (extraTZs !== undefined && extraTZs.length > 0) {
+            data.splice(0, 0, {
+              text: _.get($scope, 'translations.local', 'Local') + ': ',
+              children: extraTZs,
+              firstNOffset: extraTZs[0].nOffset,
+              firstOffset: extraTZs[0].offset
+            })
+          }
         }
 
         if (attrs.setLocal !== undefined) {
@@ -130,12 +132,14 @@ angular.module('angular-timezone-selector', [])
           })
           extraTZs = _.filter(timezones, function (tz) { return _.includes(primaryChoices, tz.name) })
 
-          data.splice(0, 0, {
-            text: _.get($scope, 'translations.primary', 'Primary') + ': ',
-            children: extraTZs,
-            firstNOffset: extraTZs[0].nOffset,
-            firstOffset: extraTZs[0].offset
-          })
+          if (extraTZs !== undefined && extraTZs.length > 0) {
+            data.splice(0, 0, {
+              text: _.get($scope, 'translations.primary', 'Primary') + ': ',
+              children: extraTZs,
+              firstNOffset: extraTZs[0].nOffset,
+              firstOffset: extraTZs[0].offset
+            })
+          }
         }
 
         // Construct a select box with the timezones grouped by country
