@@ -113,7 +113,7 @@ or with translate:
 
 [Tom Grooffer](https://github.com/tomgrooffer) for fixing a crash with JSTZ
 
-[karlhass](https://github.com/karlhaas) for fixing a crash when two instances were present on the same page and adding injectable strings and translations
+[karlhaas](https://github.com/karlhaas) for fixing a crash when two instances were present on the same page and adding injectable strings and translations
 
 [G-Lex](https://github.com/G-Lex) for adding the ability to set the width when creating the directive
 
