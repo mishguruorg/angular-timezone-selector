@@ -21,7 +21,7 @@ If you have a feature or fix please submit a pull request! This repo follows Jav
 Install using bower
 
 ```
-bower install angular-timezone-selector
+bower install angular-timezone-selector-ext
 ```
 
 Make your Angular module depend on module `angular-timezone-selector`.
