@@ -103,7 +103,10 @@ or with translate:
 
 <img src="./images/custom_placeholder.png" alt-text="Angular-selector in action with a custom placeholder"></img>
 
-## Author
+##Improved by
+[Ahsan Ayaz](https://github.com/AhsanAyaz)
+
+## Actual Implementation
 [Ashok Fernandez](https://github.com/ashokfernandez)
 
 #### With Thanks To

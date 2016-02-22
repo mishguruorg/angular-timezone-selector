@@ -1,7 +1,7 @@
 {
-  "name": "angular-timezone-selector",
+  "name": "angular-timezone-selector-ext",
   "version": "1.2.1",
-  "description": "AngularJS timezone selector",
+  "description": "AngularJS timezone selector extended",
   "main": "dist/angular-timezone-selector.min.js",
   "scripts": {
     "test": "./node_modules/.bin/standard"
@@ -15,7 +15,7 @@
     "timezone",
     "select"
   ],
-  "author": "Ashok Fernandez <ashok@mish.guru>",
+  "author": "Ahsan Ayaz <ahsan.ubitian@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mishguruorg/angular-country-selector/issues"
