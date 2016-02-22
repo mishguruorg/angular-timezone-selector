@@ -21,7 +21,7 @@ If you have a feature or fix please submit a pull request! This repo follows Jav
 Install using bower
 
 ```
-bower install angular-timezone-selector
+bower install angular-timezone-selector-ext
 ```
 
 Make your Angular module depend on module `angular-timezone-selector`.
@@ -103,7 +103,10 @@ or with translate:
 
 <img src="./images/custom_placeholder.png" alt-text="Angular-selector in action with a custom placeholder"></img>
 
-## Author
+##Improved by
+[Ahsan Ayaz](https://github.com/AhsanAyaz)
+
+## Actual Implementation
 [Ashok Fernandez](https://github.com/ashokfernandez)
 
 #### With Thanks To

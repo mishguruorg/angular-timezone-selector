@@ -10,6 +10,58 @@
  * License: MIT
  */
 
+ /**
+ * Edited By:  Ahsan Ayaz <ahsan.ubitian@gmail.com>
+ * Date:    02/22/2016
+ * License: MIT
+ */
+var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
+  reIsPlainProp = /^\w*$/,
+  rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]/g;
+
+/** Used to match backslashes in property paths. */
+var reEscapeChar = /\\(\\)?/g;
+
+
+var helper = {
+  get : function(object, path, defaultValue) {
+    var result = object == null ? undefined : helper.baseGet(object, path);
+    return result === undefined ? defaultValue : result;
+  },
+  baseGet: function(object, path) {
+    path = helper.isKey(path, object) ? [path + ''] : helper.baseToPath(path);
+
+    var index = 0,
+      length = path.length;
+
+    while (object != null && index < length) {
+      object = object[path[index++]];
+    }
+    return (index && index == length) ? object : undefined;
+  },
+  isKey: function(value, object) {
+    if (typeof value == 'number') {
+      return true;
+    }
+    return !isArray(value) &&
+      (reIsPlainProp.test(value) || !reIsDeepProp.test(value) ||
+      (object != null && value in Object(object)));
+  },
+  baseToPath: function(value) {
+    return isArray(value) ? value : helper.stringToPath(value);
+  },
+  stringToPath: function(string) {
+    var result = [];
+    toString(string).replace(rePropName, function(match, number, quote, string) {
+      result.push(quote ? string.replace(reEscapeChar, '$1') : (number || match));
+    });
+    return result;
+  },
+  where: function(obj, attrs) {
+    return _.filter(obj, _.matcher(attrs));
+  }
+}
+
 angular.module('angular-timezone-selector', [])
   .constant('_', _)
   .constant('moment', moment)
@@ -109,7 +161,7 @@ angular.module('angular-timezone-selector', [])
           }
 
           data.splice(0, 0, {
-            text: _.get($scope, 'translations.local', 'Local') + ': ',
+            text: helper.get($scope, 'translations.local', 'Local') + ': ',
             children: extraTZs,
             firstNOffset: extraTZs[0].nOffset,
             firstOffset: extraTZs[0].offset
@@ -131,7 +183,7 @@ angular.module('angular-timezone-selector', [])
           extraTZs = _.filter(timezones, function (tz) { return _.includes(primaryChoices, tz.name) })
 
           data.splice(0, 0, {
-            text: _.get($scope, 'translations.primary', 'Primary') + ': ',
+            text: helper.get($scope, 'translations.primary', 'Primary') + ': ',
             children: extraTZs,
             firstNOffset: extraTZs[0].nOffset,
             firstOffset: extraTZs[0].offset
@@ -157,9 +209,9 @@ angular.module('angular-timezone-selector', [])
           width: attrs.width || '300px',
           include_group_label_in_selected: true,
           search_contains: true,
-          no_results_text: _.get($scope, 'translations.no_results_text',
+          no_results_text: helper.get($scope, 'translations.no_results_text',
               'No results, try searching for the name of your country or nearest major city.'),
-          placeholder_text_single: _.get($scope, 'translations.placeholder', 'Choose a timezone')
+          placeholder_text_single: helper.get($scope, 'translations.placeholder', 'Choose a timezone')
         })
 
         // Update the box if ngModel changes
