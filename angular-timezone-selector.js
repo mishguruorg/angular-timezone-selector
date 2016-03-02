@@ -169,4 +169,4 @@ angular.module('angular-timezone-selector', [])
         })
       }
     }
-  }])
+  }]);
