@@ -23,7 +23,7 @@
   "homepage": "https://github.com/mishguruorg/angular-timezone-selector",
   "devDependencies": {
     "csv": "^0.4.1",
-    "csv-load-sync": "0.0.3",
+    "csv-load-sync": "^1.0.0",
     "grunt": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-string-replace": "~1.0.0",
@@ -32,7 +32,6 @@
     "uglify-js": "latest"
   },
   "dependencies": {
-    "csv-load-sync": "^1.0.0",
     "grunt-autoprefixer": "^3.0.3",
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-cssmin": "^0.12.3",

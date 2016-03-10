@@ -104,8 +104,8 @@ angular.module('angular-timezone-selector', [])
             // the format used in timezoneFactory
             var extraTZs = _.filter(timezones, { 'id': jstz.determine().name() })
           } else {
-            var localUTC = 'UTC' + moment().format('Z');
-            extraTZs = _.filter(timezones, {'offset': localUTC});
+            var localUTC = 'UTC' + moment().format('Z')
+            extraTZs = _.filter(timezones, {'offset': localUTC})
           }
 
           data.splice(0, 0, {
