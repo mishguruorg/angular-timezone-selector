@@ -102,10 +102,10 @@ angular.module('angular-timezone-selector', [])
           if (jstz !== undefined) {
             // Make sure the tz from jstz has underscores replaced with spaces so it matches
             // the format used in timezoneFactory
-            var extraTZs = _.where(timezones, { 'id': jstz.determine().name().replace(/_/g, ' ') })
+            var extraTZs = _.filter(timezones, { 'id': jstz.determine().name() })
           } else {
             var localUTC = 'UTC' + moment().format('Z')
-            extraTZs = _.where(timezones, {'offset': localUTC})
+            extraTZs = _.filter(timezones, {'offset': localUTC})
           }
 
           data.splice(0, 0, {
