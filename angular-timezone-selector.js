@@ -65,6 +65,12 @@ angular.module('angular-timezone-selector', [])
       link: function ($scope, elem, attrs) {
         var data = []
         var timezones = timezoneFactory.get()
+        var defaultTranslations = {
+          local: 'Local',
+          primary: 'Primary',
+          placeholder: 'Choose a timezone',
+          no_results_text: 'No results, try searching for the name of your country or nearest major city.'
+        }
 
         // Group the timezones by their country code
         var timezonesGroupedByCC = {}
@@ -109,7 +115,7 @@ angular.module('angular-timezone-selector', [])
           }
 
           data.splice(0, 0, {
-            text: _.get($scope, 'translations.local', 'Local') + ': ',
+            text: ($scope.translations && $scope.translations.local) || defaultTranslations.local + ': ',
             children: extraTZs,
             firstNOffset: extraTZs[0].nOffset,
             firstOffset: extraTZs[0].offset
@@ -131,7 +137,7 @@ angular.module('angular-timezone-selector', [])
           extraTZs = _.filter(timezones, function (tz) { return _.includes(primaryChoices, tz.name) })
 
           data.splice(0, 0, {
-            text: _.get($scope, 'translations.primary', 'Primary') + ': ',
+            text: ($scope.translations && $scope.translations.primary) || defaultTranslations.primary + ': ',
             children: extraTZs,
             firstNOffset: extraTZs[0].nOffset,
             firstOffset: extraTZs[0].offset
@@ -157,9 +163,8 @@ angular.module('angular-timezone-selector', [])
           width: attrs.width || '300px',
           include_group_label_in_selected: true,
           search_contains: true,
-          no_results_text: _.get($scope, 'translations.no_results_text',
-              'No results, try searching for the name of your country or nearest major city.'),
-          placeholder_text_single: _.get($scope, 'translations.placeholder', 'Choose a timezone')
+          no_results_text: ($scope.translations && $scope.translations.no_results_text) || defaultTranslations.no_results_text,
+          placeholder_text_single: ($scope.translations && $scope.translations.placeholder) || defaultTranslations.placeholder
         })
 
         // Update the box if ngModel changes
