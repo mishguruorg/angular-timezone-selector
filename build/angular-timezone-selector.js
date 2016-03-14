@@ -102,17 +102,10 @@ angular.module('angular-timezone-selector', [])
           if (jstz !== undefined) {
             // Make sure the tz from jstz has underscores replaced with spaces so it matches
             // the format used in timezoneFactory
-<<<<<<< HEAD
             var extraTZs = _.filter(timezones, { 'id': jstz.determine().name() })
-          } else {
-            var localUTC = 'UTC' + moment().format('Z');
-            extraTZs = _.filter(timezones, {'offset': localUTC});
-=======
-            var extraTZs = _.filter(timezones, { 'id': jstz.determine().name().replace(/_/g, ' ') })
           } else {
             var localUTC = 'UTC' + moment().format('Z')
             extraTZs = _.filter(timezones, {'offset': localUTC})
->>>>>>> 8b7ccbb8a5d062addae2f210349769f292e173e8
           }
 
           if (extraTZs !== undefined && extraTZs.length > 0) {
