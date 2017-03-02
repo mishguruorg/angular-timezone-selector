@@ -57,7 +57,7 @@ angular.module('angular-timezone-selector', [])
     return {
       restrict: 'E',
       replace: true,
-      template: '<select style="min-width:300px;"></select>',
+      template: '<select ng-options="item.country.id as item.country.name group by item.text for item in data" style="min-width:300px;"><option value=""></option></select>',
       scope: {
         ngModel: '=',
         translations: '='
@@ -78,21 +78,19 @@ angular.module('angular-timezone-selector', [])
 
         // Add the grouped countries to the data array with their country name as the group option
         _.forEach(timezonesGroupedByCC, function (zonesByCountry, CC) {
-          var zonesForCountry = {
-            text: CCToCountryName[CC] + ': ',
-            children: zonesByCountry,
-            firstNOffset: zonesByCountry[0].nOffset
-          }
-
-          data.push(zonesForCountry)
+          _.forEach(zonesByCountry, function (country) {
+            data.push({
+              text: CCToCountryName[CC] + ': ',
+              country: country,
+              firstNOffset: zonesByCountry[0].nOffset,
+              firstOffset: zonesByCountry[0].offset
+            })
+          })
         })
 
         // Sort by UTC or country name
         if (attrs.sortBy === 'offset') {
-          data = _.sortBy(data, 'firstNOffset')
-          _.forEach(data, function (zonesForCountry, key) {
-            zonesForCountry.children = _.sortBy(zonesForCountry.children, 'nOffset')
-          })
+          data = _.sortBy(data, 'nOffset')
         } else {
           data = _.sortBy(data, 'text')
         }
@@ -109,11 +107,13 @@ angular.module('angular-timezone-selector', [])
           }
 
           if (extraTZs !== undefined && extraTZs.length > 0) {
-            data.splice(0, 0, {
-              text: _.get($scope, 'translations.local', 'Local') + ': ',
-              children: extraTZs,
-              firstNOffset: extraTZs[0].nOffset,
-              firstOffset: extraTZs[0].offset
+            _.forEach(extraTZs, function(extraTZ) {
+              data.splice(0, 0, {
+                text: _.get($scope, 'translations.local', 'Local') + ': ',
+                country: extraTZ,
+                firstNOffset: extraTZ.nOffset,
+                firstOffset: extraTZ.offset
+              })
             })
           }
         }
@@ -133,28 +133,28 @@ angular.module('angular-timezone-selector', [])
           extraTZs = _.filter(timezones, function (tz) { return _.includes(primaryChoices, tz.name) })
 
           if (extraTZs !== undefined && extraTZs.length > 0) {
-            data.splice(0, 0, {
-              text: _.get($scope, 'translations.primary', 'Primary') + ': ',
-              children: extraTZs,
-              firstNOffset: extraTZs[0].nOffset,
-              firstOffset: extraTZs[0].offset
+            _.forEach(extraTZs, function(extraTZ) {
+              data.splice(0, 0, {
+                text: _.get($scope, 'translations.local', 'Local') + ': ',
+                country: extraTZ,
+                firstNOffset: extraTZ.nOffset,
+                firstOffset: extraTZ.offset
+              })
             })
           }
         }
 
-        // Construct a select box with the timezones grouped by country
-        _.forEach(data, function (group) {
-          var optgroup = $('<optgroup label="' + group.text + '">')
-          group.children.forEach(function (option) {
-            if (attrs.displayUtc === 'true' && option.name.indexOf('(UTC') === -1) {
-              option.name = option.name + ' (' + option.offset + ')'
+        // Annotate the names of the timezones if display UTC is true
+        if (attrs.displayUtc === 'true') {
+          _.forEach(data, function (item) {
+            if (item.country.name.indexOf('(UTC') === -1) {
+              item.country.name = item.country.name + ' (' + item.country.offset + ')'
             }
-
-            optgroup.append('<option value="' + option.id + '">' +
-              option.name + '</option>')
           })
-          elem.append(optgroup)
-        })
+        }
+
+        // Put the data on the scope for access
+        $scope.data = data
 
         // Initialise the chosen box
         elem.chosen({
@@ -166,11 +166,14 @@ angular.module('angular-timezone-selector', [])
           placeholder_text_single: _.get($scope, 'translations.placeholder', 'Choose a timezone')
         })
 
-        // Update the box if ngModel changes
-        $scope.$watch('ngModel', function () {
+        // This is a setup function and this is a hack, but it works to fire the setup function once at the right time
+        var watch = $scope.$watch('ngModel', setup)
+
+        function setup () {
           elem.val($scope.ngModel)
           elem.trigger('chosen:updated')
-        })
+          watch()
+        }
       }
     }
   }])
