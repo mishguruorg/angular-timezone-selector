@@ -29,13 +29,13 @@
     "grunt-string-replace": "~1.0.0",
     "lodash": "latest",
     "standard": "^5.3.1",
-    "uglify-js": "latest"
-  },
-  "dependencies": {
+    "uglify-js": "latest",
     "grunt-autoprefixer": "^3.0.3",
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-cssmin": "^0.12.3",
     "grunt-contrib-less": "^1.0.1"
+  },
+  "dependencies": {
   },
   "standard": {
     "ignore": [
