@@ -1,6 +1,6 @@
 {
   "name": "angular-timezone-selector",
-  "version": "1.2.1",
+  "version": "1.7.0",
   "description": "AngularJS timezone selector",
   "main": "dist/angular-timezone-selector.min.js",
   "scripts": {
@@ -24,15 +24,14 @@
   "devDependencies": {
     "csv": "^0.4.1",
     "csv-load-sync": "^1.0.0",
-    "lodash": "latest",
-    
-    "uglify-js": "latest"
-  },
-  "dependencies": {
-    "standard": "^5.4.1",
     "grunt": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-string-replace": "~1.0.0",
+    "lodash": "latest",
+    "standard": "^5.4.1",
+    "uglify-js": "latest"
+  },
+  "dependencies": {
     "grunt-autoprefixer": "^3.0.3",
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-cssmin": "^0.12.3",
