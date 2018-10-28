@@ -1,3 +1,7 @@
+# (Ready Only)
+
+This repository is in a read only state - but creating a fork is always an option.
+
 # Timezone selector for Angular JS
 
 A simple AngularJS directive to create timezone select. It uses [chosen](http://harvesthq.github.io/chosen/) to create auto-complete timezone select. Timezone information comes from [moment](http://momentjs.com/timezone/). Countries timezone data comes from [TimezoneDB](http://timezonedb.com/download).
